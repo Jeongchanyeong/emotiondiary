@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import MyButton from "./MyButton";
 
 const sortOptionList = [
   { value: "latest", name: "최신 순" },
@@ -13,7 +15,11 @@ const emotionFilterList = [
 
 const ControlMenu = ({ value, onChange, optionList }) => {
   return (
-    <select value={value} onChange={(e) => onChange(e.target.value)}>
+    <select
+      className="ControlMenu"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+    >
       {optionList.map((it, idx) => (
         <option key={idx} value={it.value}>
           {it.name}
@@ -24,6 +30,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
 };
 
 const DiaryList = ({ diaryList }) => {
+  const navigate = useNavigate();
   const [sortType, setSortType] = useState("latest");
   const [emotionFilter, setEmotionFilter] = useState("all");
 
@@ -59,19 +66,30 @@ const DiaryList = ({ diaryList }) => {
   };
 
   return (
-    <div>
-      {/* 최신, 오래된 순 filter select */}
-      <ControlMenu
-        value={sortType}
-        onChange={setSortType}
-        optionList={sortOptionList}
-      />
-      {/* 감정 filter select */}
-      <ControlMenu
-        value={emotionFilter}
-        onChange={setEmotionFilter}
-        optionList={emotionFilterList}
-      />
+    <div className="DiaryList">
+      <div className="menu_wrapper">
+        <div className="left_col">
+          {/* 최신, 오래된 순 filter select */}
+          <ControlMenu
+            value={sortType}
+            onChange={setSortType}
+            optionList={sortOptionList}
+          />
+          {/* 감정 filter select */}
+          <ControlMenu
+            value={emotionFilter}
+            onChange={setEmotionFilter}
+            optionList={emotionFilterList}
+          />
+        </div>
+        <div className="right_col">
+          <MyButton
+            type={"positive"}
+            text={"새 일기 쓰기"}
+            onClick={() => navigate("./new")}
+          />
+        </div>
+      </div>
 
       {getProcessedDiaryList().map((it) => (
         <div key={it.id}>
