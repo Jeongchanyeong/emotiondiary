@@ -175,3 +175,23 @@ header button {
 .DiaryItem .emotion_ing_wrapper img {
   width: 50%;
 }
+
+.DiaryItem .info_wrapper {
+  flex-grow: 1;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.DiaryItem .diary_date {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.DiaryItem .diary_content_preview {
+  font-size: 18px;
+}
+
+.DiaryItem .btn_wrapper {
+  min-width: 70px;
+}
