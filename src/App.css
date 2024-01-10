@@ -143,7 +143,7 @@ header button {
   justify-content: space-between;
 }
 
-.DiaryItem .emotion_ing_wrapper {
+.DiaryItem .emotion_img_wrapper {
   cursor: pointer;
   min-width: 120px;
   height: 80px;
@@ -152,27 +152,27 @@ header button {
   justify-content: center;
 }
 
-.DiaryItem .emotion_ing_wrapper_1 {
+.DiaryItem .emotion_img_wrapper_1 {
   background-color: #64c964;
 }
 
-.DiaryItem .emotion_ing_wrapper_2 {
+.DiaryItem .emotion_img_wrapper_2 {
   background-color: #9dd772;
 }
 
-.DiaryItem .emotion_ing_wrapper_3 {
+.DiaryItem .emotion_img_wrapper_3 {
   background-color: #fdce17;
 }
 
-.DiaryItem .emotion_ing_wrapper_4 {
+.DiaryItem .emotion_img_wrapper_4 {
   background-color: #fd8446;
 }
 
-.DiaryItem .emotion_ing_wrapper_5 {
+.DiaryItem .emotion_img_wrapper_5 {
   background-color: #fd565f;
 }
 
-.DiaryItem .emotion_ing_wrapper img {
+.DiaryItem .emotion_img_wrapper img {
   width: 50%;
 }
 
@@ -300,4 +300,74 @@ header button {
 
 .EmotionItem_on_5 {
   background-color: #fd565f;
+}
+
+/* Diary */
+
+.DiaryPage {
+}
+
+.DiaryPage section {
+  width: 100%;
+  margin-bottom: 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.DiaryPage h4 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.DiaryPage .diary_img_wrapper {
+  background-color: #ececec;
+  width: 250px;
+  height: 250px;
+
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.DiaryPage .emotion_descript {
+  font-size: 25px;
+}
+
+.DiaryPage .diary_img_wrapper_1 {
+  background-color: #64c964;
+}
+
+.DiaryPage .diary_img_wrapper_2 {
+  background-color: #9dd772;
+}
+.DiaryPage .diary_img_wrapper_3 {
+  background-color: #fdce17;
+}
+.DiaryPage .diary_img_wrapper_4 {
+  background-color: #fd8446;
+}
+.DiaryPage .diary_img_wrapper_5 {
+  background-color: #fd565f;
+}
+
+.DiaryPage .diary_content_wrapper {
+  width: 100%;
+  background-color: #ececec;
+  border-radius: 5px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.DiaryPage .diary_content_wrapper p {
+  padding: 20px;
+  text-align: left;
+  font-size: 20px;
+  font-family: "Yeon sung";
+  font-weight: 400;
+  line-height: 2.5;
 }

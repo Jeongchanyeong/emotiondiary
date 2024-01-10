@@ -17,8 +17,8 @@ const DiaryItem = ({ id, emotion, content, date }) => {
       <div
         onClick={goDetail}
         className={[
-          "emotion_ing_wrapper",
-          `emotion_ing_wrapper_${emotion}`,
+          "emotion_img_wrapper",
+          `emotion_img_wrapper_${emotion}`,
         ].join(" ")}
       >
         <img src={process.env.PUBLIC_URL + `assets/emotion${emotion}.png`} />
