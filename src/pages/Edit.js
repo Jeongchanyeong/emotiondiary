@@ -18,7 +18,6 @@ const Edit = () => {
       const targetDiary = diaryList.find(
         (it) => parseInt(it.id) === parseInt(id)
       );
-      console.log(targetDiary);
 
       // truthy falsy 사용하여 edit의 id가 존재하지 않을 경우엔 home으로 보내주도록 한다.
       if (targetDiary) {
