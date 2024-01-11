@@ -12,6 +12,11 @@ const Edit = () => {
   const diaryList = useContext(DiaryStateContext);
 
   useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `감정 일기장 - ${id}번 일기 수정`;
+  }, []);
+
+  useEffect(() => {
     if (diaryList.length >= 1) {
       // find 배열 내장함수는 찾아낸 값 자체를 반환한다.
       // id가 문자열일 수도 있기 때문에 parseInt로 형변환 해준다.
