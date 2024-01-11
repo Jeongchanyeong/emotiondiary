@@ -12,7 +12,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const [date, setDate] = useState(getStringDate(new Date()));
   const [emotion, setEmotion] = useState(3);
   const [content, setContent] = useState("");
-  const { onCreate, onEdit } = useContext(DiaryDispatchContext);
+  const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
 
   const contentRef = useRef();
   const navigate = useNavigate();
@@ -40,6 +40,15 @@ const DiaryEditor = ({ isEdit, originData }) => {
     navigate("/", { replace: true });
   };
 
+  const hadleRemove = () => {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      {
+        onRemove(originData.id);
+        navigate("/", { replace: true });
+      }
+    }
+  };
+
   // 수정 시 기존에 설정해놓은 값이 유지도되록
   useEffect(() => {
     if (isEdit) {
@@ -55,6 +64,15 @@ const DiaryEditor = ({ isEdit, originData }) => {
         headText={isEdit ? "일기 수정하기 " : "새 일기 쓰기"}
         leftChild={
           <MyButton text={"< 뒤로 가기"} onClick={() => navigate(-1)} />
+        }
+        rightChild={
+          isEdit && (
+            <MyButton
+              text={"삭제하기"}
+              type={"negative"}
+              onClick={hadleRemove}
+            />
+          )
         }
       />
       <div>
