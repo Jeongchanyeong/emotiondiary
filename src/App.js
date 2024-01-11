@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Diary from "./pages/Diary";
 import New from "./pages/New";
 import Edit from "./pages/Edit";
-import React, { useReducer, useRef } from "react";
+import React, { useEffect, useReducer, useRef } from "react";
 
 const reducer = (state, action) => {
   let newState = [];
@@ -29,48 +29,31 @@ const reducer = (state, action) => {
     default:
       return state;
   }
+  localStorage.setItem("diary", JSON.stringify(newState));
   return newState;
 };
 
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 
-const dummyList = [
-  {
-    id: 1,
-    emotion: 1,
-    content: "일기 1번",
-    date: 1704260575375,
-  },
-  {
-    id: 2,
-    emotion: 2,
-    content: "일기 2번",
-    date: 1704260575376,
-  },
-  {
-    id: 3,
-    emotion: 3,
-    content: "일기 3번",
-    date: 1704260575377,
-  },
-  {
-    id: 4,
-    emotion: 4,
-    content: "일기 4번",
-    date: 1704260575378,
-  },
-  {
-    id: 5,
-    emotion: 5,
-    content: "일기 5번",
-    date: 1704260575379,
-  },
-];
-
 function App() {
-  const [data, dispatch] = useReducer(reducer, dummyList);
+  const [data, dispatch] = useReducer(reducer, []);
   const dataId = useRef(6);
+
+  useEffect(() => {
+    const localData = localStorage.getItem("diary");
+    if (localData) {
+      const diaryList = JSON.parse(localData).sort(
+        (a, b) => parseInt(b.id) - parseInt(a.id)
+      );
+      // 없는 index에서 id를 꺼내오는 것을 막기 위해 diaryList의 길이가 1 이상일 때만 로직 수행하도록 수행
+      if (diaryList.length >= 1) {
+        dataId.current = parseInt(diaryList[0].id) + 1;
+        dispatch({ type: "INIT", data: diaryList });
+      }
+    }
+  }, []);
+
   // CREATE
   const onCreate = (date, content, emotion) => {
     dispatch({
