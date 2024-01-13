@@ -3,7 +3,7 @@ import MyButton from "./MyButton";
 import React from "react";
 
 const DiaryItem = ({ id, emotion, content, date }) => {
-  const strDate = new Date(parseInt(date)).toLocaleString();
+  const strDate = new Date(parseInt(date)).toLocaleDateString();
 
   const navigate = useNavigate();
 
